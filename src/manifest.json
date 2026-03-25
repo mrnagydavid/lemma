@@ -1,0 +1,17 @@
+{
+  "name": "Lemma",
+  "short_name": "Lemma",
+  "description": "Quick dictionary lookup across languages",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0088ff",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
