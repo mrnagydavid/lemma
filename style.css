@@ -1,0 +1,280 @@
+/* ── Design tokens ───────────────────────────── */
+:root {
+  --color-primary: #0088ff;
+  --color-primary-hover: #0077e6;
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-border: #ddd;
+  --color-text: #222;
+  --color-text-muted: #666;
+  --color-text-faint: #aaa;
+  --radius: 0.5rem;
+  --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --font-size-lg: 1.125rem;
+  --font-size-md: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-xs: 0.875rem;
+  --font-size-xxs: 0.75rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.375rem;
+  --spacing-md: 0.5rem;
+  --spacing-lg: 0.75rem;
+  --spacing-xl: 1rem;
+  --input-height: 48px;
+}
+
+/* ── Reset ───────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Base ────────────────────────────────────── */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, select, input {
+  font: inherit;
+  color: inherit;
+}
+
+/* ── Toolbar ─────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--color-surface);
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#language {
+  height: var(--input-height);
+  padding: 0 2.5rem 0 var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  font-size: var(--font-size-md);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-lg) center;
+  cursor: pointer;
+}
+
+#language:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -1px;
+}
+
+.input-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+#lookup-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+#lookup-input {
+  width: 100%;
+  height: var(--input-height);
+  padding: 0 2.5rem 0 var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  font-size: var(--font-size-md);
+}
+
+#lookup-input::placeholder {
+  color: var(--color-text-faint);
+}
+
+#lookup-input:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -1px;
+}
+
+.clear-btn {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-text-faint);
+  cursor: pointer;
+  padding: 0 var(--spacing-xs);
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.clear-btn:hover {
+  color: var(--color-text);
+}
+
+.lookup-btn {
+  height: var(--input-height);
+  padding: 0 1.5rem;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.lookup-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+.lookup-btn:active {
+  transform: scale(0.98);
+}
+
+/* ── Tabs ────────────────────────────────────── */
+.tab-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  padding: 0 var(--spacing-md);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem var(--spacing-xl);
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border: 1px solid transparent;
+  border-top: none;
+  transition: color 0.15s, background 0.15s;
+}
+
+.tab.active {
+  color: var(--color-text);
+  font-weight: 500;
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  margin-top: -1px;
+  padding-top: calc(0.5rem + 1px);
+}
+
+.tab:hover:not(.active) {
+  color: var(--color-text);
+}
+
+/* ── Content ─────────────────────────────────── */
+.content {
+  flex: 1;
+  min-height: 0;
+}
+
+#result {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Footer / Legal ──────────────────────────── */
+.footer {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.footer-dot {
+  color: var(--color-text-faint);
+  font-size: var(--font-size-xxs);
+}
+
+.legal-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-faint);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.legal-link:hover {
+  color: var(--color-text-muted);
+}
+
+.legal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+}
+
+.legal-panel {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24rem;
+  max-width: 90vw;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl) 1.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  z-index: 10;
+}
+
+.legal-panel p + p {
+  margin-top: var(--spacing-md);
+}
+
+.legal-panel code {
+  background: var(--color-surface);
+  padding: 0.1rem var(--spacing-xs);
+  border-radius: 0.2rem;
+  font-size: var(--font-size-xs);
+}
+
+/* ── Firefox mobile: toolbar on top ──────────── */
+@supports (-moz-appearance: none) {
+  @media (max-width: 768px) {
+    .footer   { order: 0; }
+    .toolbar  { order: 1; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+    .tab-bar  { order: 2; border-top: 1px solid var(--color-border); border-bottom: none; }
+    .content  { order: 3; }
+
+    .tab.active {
+      border-radius: var(--radius) var(--radius) 0 0;
+      border: 1px solid var(--color-border);
+      border-bottom: none;
+      margin-bottom: -1px;
+      padding-bottom: calc(0.5rem + 1px);
+      margin-top: 0;
+      padding-top: 0.5rem;
+    }
+  }
+}

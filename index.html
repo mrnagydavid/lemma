@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemma</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0088ff">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <footer class="footer">
+    <a href="#" class="legal-link" data-panel="privacy">Privacy</a>
+    <span class="footer-dot">&middot;</span>
+    <a href="#" class="legal-link" data-panel="terms">Terms</a>
+    <span class="footer-dot" id="install-dot" hidden>&middot;</span>
+    <a href="#" class="legal-link" id="install-btn" hidden>Install</a>
+  </footer>
+
+  <div class="content">
+    <iframe id="result" title="Wiktionary Lookup" hidden></iframe>
+  </div>
+
+  <div class="tab-bar">
+    <span class="tab active">Wiki</span>
+    <a id="babla-tab" class="tab" href="#" target="_blank" rel="noopener">Bab.la &#x2197;</a>
+  </div>
+
+  <form class="toolbar" id="lookup-form">
+    <select id="language">
+      <option value="en">English</option>
+      <option value="sv">Swedish</option>
+      <option value="es">Spanish</option>
+      <option value="fr">French</option>
+    </select>
+    <div class="input-wrapper">
+      <input type="search" id="lookup-input" name="lookup" placeholder="Enter search term" autocomplete="off">
+      <button type="button" id="clear-btn" class="clear-btn" hidden>&times;</button>
+    </div>
+    <button type="submit" class="lookup-btn">Lookup</button>
+  </form>
+
+  <div id="legal-overlay" class="legal-overlay" hidden></div>
+
+  <div id="privacy" class="legal-panel" hidden>
+    <p>Lemma is a static page. It runs entirely in your browser.</p>
+    <p>It does not collect, transmit, or store any personal data. There is no server. There are no analytics. There are no cookies. There is no tracking pixel watching you look up words.</p>
+    <p>The only thing stored is your preferred language, in your browser's local storage. This never leaves your device. You can clear it anytime in your browser settings, should you ever need to disavow your interest in looking up words in a foreign language.</p>
+    <p>When you look up a word, your browser loads content directly from Wiktionary or bab.la. Those sites have their own privacy policies, which are — regrettably — longer than this one.</p>
+  </div>
+
+  <div id="terms" class="legal-panel" hidden>
+    <p>Lemma is a free tool. You type a word, it shows you a dictionary page. That is the extent of the service.</p>
+    <p>There is no warranty, no SLA, and no guarantee that the definitions are correct, complete, or won't start an argument at dinner.</p>
+    <p>Dictionary content comes from Wiktionary and bab.la. Lemma does not own, curate, or take responsibility for any of it. If a definition offends you, take it up with the volunteers.</p>
+    <p>By using Lemma you agree to… use Lemma. That's it. There is nothing else to agree to.</p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
