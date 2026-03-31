@@ -186,6 +186,16 @@ button, select, input {
   color: var(--color-text);
 }
 
+/* ── IPA bar ─────────────────────────────────── */
+.ipa-bar {
+  text-align: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+  letter-spacing: 0.05em;
+}
+
 /* ── Content ─────────────────────────────────── */
 .content {
   flex: 1;
@@ -265,7 +275,8 @@ button, select, input {
     .footer   { order: 0; }
     .toolbar  { order: 1; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
     .tab-bar  { order: 2; border-top: 1px solid var(--color-border); border-bottom: none; }
-    .content  { order: 3; }
+    .ipa-bar  { order: 3; border-top: none; border-bottom: 1px solid var(--color-border); }
+    .content  { order: 4; }
 
     .tab.active {
       border-radius: var(--radius) var(--radius) 0 0;
