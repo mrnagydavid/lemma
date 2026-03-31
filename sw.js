@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lemma-v2';
+const CACHE_NAME = 'lemma-v3';
 const SHELL_FILES = [
   '/',
   '/index.html',
@@ -25,6 +25,21 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  // IPA dictionary files: cache first (static data)
+  if (e.request.url.includes('cdn.jsdelivr.net/gh/open-dict-data/ipa-dict')) {
+    e.respondWith(
+      caches.match(e.request).then((cached) => {
+        if (cached) return cached;
+        return fetch(e.request).then((res) => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+          return res;
+        });
+      })
+    );
+    return;
+  }
+
   // Only handle app shell files; let iframe/external requests pass through
   if (SHELL_FILES.some((f) => e.request.url.endsWith(f))) {
     // Network first, fall back to cache
