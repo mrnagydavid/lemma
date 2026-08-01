@@ -128,6 +128,9 @@ button, select, input {
 }
 
 .lookup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: var(--input-height);
   padding: 0 1.5rem;
   background: var(--color-primary);
@@ -147,6 +150,37 @@ button, select, input {
 
 .lookup-btn:active {
   transform: scale(0.98);
+}
+
+.lookup-icon {
+  display: none;
+}
+
+/* ── Mobile: flags and icon to free up input space ── */
+@media (max-width: 768px) {
+  .toolbar {
+    gap: var(--spacing-md);
+  }
+
+  #language {
+    padding: 0 1.75rem 0 var(--spacing-md);
+    background-position: right var(--spacing-md) center;
+    font-size: var(--font-size-lg);
+    text-align: center;
+  }
+
+  .lookup-btn {
+    width: var(--input-height);
+    padding: 0;
+  }
+
+  .lookup-icon {
+    display: block;
+  }
+
+  .lookup-label {
+    display: none;
+  }
 }
 
 /* ── Tabs ────────────────────────────────────── */

@@ -15,6 +15,23 @@ const ipaBar = document.getElementById('ipa-bar');
 
 let currentUrl = '';
 
+// On narrow screens the language select shows flags instead of names
+const languageNames = new Map(
+  [...languageSelect.options].map((option) => [option.value, option.textContent])
+);
+const narrowScreen = window.matchMedia('(max-width: 768px)');
+
+function updateLanguageLabels() {
+  for (const option of languageSelect.options) {
+    option.textContent = narrowScreen.matches
+      ? option.dataset.flag
+      : languageNames.get(option.value);
+  }
+}
+
+updateLanguageLabels();
+narrowScreen.addEventListener('change', updateLanguageLabels);
+
 // IPA dictionary
 const ipaDicts = {};
 let ipaRequestId = 0;
