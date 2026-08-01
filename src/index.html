@@ -32,16 +32,22 @@
 
   <form class="toolbar" id="lookup-form">
     <select id="language">
-      <option value="en">English</option>
-      <option value="sv">Swedish</option>
-      <option value="es">Spanish</option>
-      <option value="fr">French</option>
+      <option value="en" data-flag="&#x1F1EC;&#x1F1E7;">English</option>
+      <option value="sv" data-flag="&#x1F1F8;&#x1F1EA;">Swedish</option>
+      <option value="es" data-flag="&#x1F1EA;&#x1F1F8;">Spanish</option>
+      <option value="fr" data-flag="&#x1F1EB;&#x1F1F7;">French</option>
     </select>
     <div class="input-wrapper">
       <input type="search" id="lookup-input" name="lookup" placeholder="Enter search term" autocomplete="off">
       <button type="button" id="clear-btn" class="clear-btn" hidden>&times;</button>
     </div>
-    <button type="submit" class="lookup-btn">Lookup</button>
+    <button type="submit" class="lookup-btn" aria-label="Lookup">
+      <svg class="lookup-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="M16.5 16.5 21 21"></path>
+      </svg>
+      <span class="lookup-label">Lookup</span>
+    </button>
   </form>
 
   <div id="legal-overlay" class="legal-overlay" hidden></div>
